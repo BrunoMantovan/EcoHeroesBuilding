@@ -12,16 +12,20 @@ public class Building : MonoBehaviour
     public bool isBeingHeld = false;
     public GameObject placeCanvas;
 
+    Grid gr_obj;
     GridBuilding gridBuild;
     private bool hasBeenPlaced = false;
 
     private void Start()
     {
+        gr_obj = GameObject.Find("Grid").GetComponent<Grid>();
         gridBuild = GameObject.Find("Grid2").GetComponent<GridBuilding>();
     }
 
     void Update()
     {
+
+
         if(isBeingHeld == true && hasBeenPlaced == false)
         {
             Vector3 mousePos;
@@ -30,7 +34,6 @@ public class Building : MonoBehaviour
 
             this.gameObject.transform.localPosition = new Vector3(mousePos.x, mousePos.y, 0);
         }
-        
     }
     
     private void OnMouseDown()
@@ -71,6 +74,8 @@ public class Building : MonoBehaviour
 
     public void Place()
     {
+        Vector3Int cp = gr_obj.LocalToCell(transform.position);
+        transform.position = gr_obj.GetCellCenterLocal(cp);
         Vector3Int positionInt = GridBuilding.current.gridlayout.LocalToCell(transform.position);
         BoundsInt areaTemp = area;
         areaTemp.position = positionInt;
