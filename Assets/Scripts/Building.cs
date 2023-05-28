@@ -15,11 +15,13 @@ public class Building : MonoBehaviour
     Grid gr_obj;
     GridBuilding gridBuild;
     private bool hasBeenPlaced = false;
+    TimedBuilding timedBuild;
 
     private void Start()
     {
         gr_obj = GameObject.Find("Grid").GetComponent<Grid>();
         gridBuild = GameObject.Find("Grid2").GetComponent<GridBuilding>();
+        
     }
 
     void Update()
@@ -86,13 +88,19 @@ public class Building : MonoBehaviour
 
     public void PlaceButton()
     {
-        gridBuild.TickButton();
-        gridBuild.gameObject.SetActive(false);
-        hasBeenPlaced = true;
-        transform.gameObject.tag = "PlacedBuilding";
+        if (CanBePlaced())
+        {
+            Place();
+            timedBuild = this.gameObject.GetComponent<TimedBuilding>();
+            timedBuild.StartTimer();
+            gridBuild.gameObject.SetActive(false);
+            hasBeenPlaced = true;
+            transform.gameObject.tag = "PlacedBuilding";
+        }
     }
     public void CancelButton()
     {
-        gridBuild.CrossButton();
+        gridBuild.ClearArea();
+        Destroy(this.gameObject);
     }
 }

@@ -51,25 +51,27 @@ public class TimedBuilding : MonoBehaviour
             {
                 if(timeLeft.Days != 0)
                 {
-                    text += timeLeft.Days + "d ";
-                    text += timeLeft.Hours + "h ";
-                    yield return new WaitForSeconds(timeLeft.Minutes * 60);
+                    TimeSpan ts1 = TimeSpan.FromSeconds(totalSecondsLeft);
+                    text += ts1.Days + "d ";
+                    text += ts1.Hours + "h";
+                    //yield return new WaitForSeconds(timeLeft.Minutes * 60);
                 }
                 else if(timeLeft.Hours != 0)
                 {
-                    text += timeLeft.Hours + "h ";
-                    text += timeLeft.Minutes + "m ";
-                    yield return new WaitForSeconds(timeLeft.Seconds);
+                    TimeSpan ts2 = TimeSpan.FromSeconds(totalSecondsLeft);
+                    text += ts2.Hours + "h ";
+                    text += ts2.Minutes + "m";
+                    //yield return new WaitForSeconds(timeLeft.Seconds);
                 }
                 else if(timeLeft.Minutes != 0)
                 {
                     TimeSpan ts = TimeSpan.FromSeconds(totalSecondsLeft);
-                    text += timeLeft.Minutes + "m ";
-                    text += timeLeft.Seconds + "s ";
+                    text += ts.Minutes + "m ";
+                    text += ts.Seconds + "s";
                 }
                 else
                 {
-                    text += Mathf.FloorToInt((float)totalSecondsLeft) + "s "; 
+                    text += Mathf.FloorToInt((float) totalSecondsLeft) + "s"; 
                 }
 
                 timeLeftText.text = text;

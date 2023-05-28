@@ -18,6 +18,7 @@ public class GridBuilding : MonoBehaviour
     private Building temp;
     private Vector3 prevPos;
     private BoundsInt prevArea;
+    
 
     TimedBuilding timeBuilding;
     //Unity Methods
@@ -63,37 +64,6 @@ public class GridBuilding : MonoBehaviour
                 }
             }
         }
-        /*else if (Input.GetKeyDown(KeyCode.Space))
-        {
-            if (temp.CanBePlaced())
-            {
-                temp.Place();
-                timeBuilding = GameObject.FindGameObjectWithTag("Building").GetComponent<TimedBuilding>();
-
-                timeBuilding.StartTimer();
-            }
-        }*/
-        else if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            ClearArea();
-            Destroy(temp.gameObject);
-        }
-    }
-
-    public void TickButton()
-    {
-        if (temp.CanBePlaced())
-        {
-            temp.Place();
-            timeBuilding = GameObject.FindGameObjectWithTag("Building").GetComponent<TimedBuilding>();
-
-            timeBuilding.StartTimer();
-        }
-    }
-    public void CrossButton()
-    {
-        ClearArea();
-        Destroy(temp.gameObject);
     }
 
     //Building Placement
@@ -103,7 +73,7 @@ public class GridBuilding : MonoBehaviour
         FollowBuilding();
     }
 
-    private void ClearArea()
+    public void ClearArea()
     {
         TileBase[] toClear = new TileBase[prevArea.size.x * prevArea.size.y * prevArea.size.z];
         FillTiles(toClear, TileType.empty);
