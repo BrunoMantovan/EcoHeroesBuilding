@@ -25,6 +25,7 @@ public class TimedBuilding : MonoBehaviour
     //[SerializeField] private Button skipButton;
     //[SerializeField] private Button startButton;
 
+    Building buildObj;
 
     void InitializeWindow()
     {
@@ -84,6 +85,8 @@ public class TimedBuilding : MonoBehaviour
                 timeLeftText.text = "Finished";
                 inProgress = false;
                 timeLeftSlider.value = 1;
+                buildObj = this.gameObject.GetComponent<Building>();
+                buildObj.finishedBuilding = true;
                 break;                
             }
         }

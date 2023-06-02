@@ -18,7 +18,7 @@ public class GridBuilding : MonoBehaviour
     private Building temp;
     private Vector3 prevPos;
     private BoundsInt prevArea;
-    
+    Vector2 offset;
 
     TimedBuilding timeBuilding;
     //Unity Methods
@@ -53,8 +53,9 @@ public class GridBuilding : MonoBehaviour
             }*/
             if (!temp.placed)
             {
-                Vector2 touchPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                Vector3Int cellPos = gridlayout.LocalToCell(touchPos);
+                Vector3 buildingPos = temp.transform.position;
+                //Vector2 touchPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                Vector3Int cellPos = gridlayout.LocalToCell(buildingPos);
 
                 if(prevPos != cellPos)
                 {
