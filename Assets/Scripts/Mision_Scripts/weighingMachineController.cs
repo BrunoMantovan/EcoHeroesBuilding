@@ -18,7 +18,7 @@ public class weighingMachineController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         weighingMachineCollider = GetComponent<Collider2D>();
         wmRender = GetComponent<Renderer>();
-        gridStartPosition = wmRender.bounds.min + new Vector3(0f, wmRender.bounds.size.y * 1f, 0f);
+        gridStartPosition = wmRender.bounds.min + new Vector3(wmRender.bounds.size.x - 1.3f, wmRender.bounds.size.y + 1f, 0f);
         recyclesList = new List<recycles>();
     }
 

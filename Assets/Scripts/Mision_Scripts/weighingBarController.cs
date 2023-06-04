@@ -14,6 +14,7 @@ public class weighingBarController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = truck.transform.position;
+        transform.position = new Vector3(truck.transform.position.x + 0.5f , truck.transform.position.y - 0.1f);
+        
     }
 }
