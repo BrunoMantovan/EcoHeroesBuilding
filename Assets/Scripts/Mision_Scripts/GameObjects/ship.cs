@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class shipController : MonoBehaviour
+public class ship : MonoBehaviour
 {
     private Rigidbody2D rb; //rigidbody del barco
 

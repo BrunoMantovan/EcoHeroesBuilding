@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Collider2D))]
 [RequireComponent(typeof(Rigidbody2D))]
 
-public class cannonShooter : MonoBehaviour
+public class cannonShooterController : MonoBehaviour
 {
     [SerializeField] private Transform pivot;
     [SerializeField] private GameObject netPrefab;
@@ -15,8 +15,9 @@ public class cannonShooter : MonoBehaviour
     public float springRate;
     public float maxForce;
     public float thresholdDis = 0.1f;
+    
     private Vector3 forceGenerated;
-
+    private cannonNetCreatorController creator;
     private Rigidbody2D rbShooter;
     private Collider2D rbcollider;
 
@@ -25,7 +26,6 @@ public class cannonShooter : MonoBehaviour
     {
         rbShooter = GetComponent<Rigidbody2D>();
         rbShooter.bodyType = RigidbodyType2D.Static;
-        
     }
     private void FixedUpdate()
     {
@@ -38,15 +38,12 @@ public class cannonShooter : MonoBehaviour
                 rbcollider = GetComponent<Collider2D>();
                 rbShooter = GetComponent<Rigidbody2D>();
                 rbShooter.bodyType = RigidbodyType2D.Static;
-                Debug.Log("antes");
                 Vector3 pos = cameraShooter.ScreenToWorldPoint(touch.position);
                 RaycastHit2D hit = Physics2D.Raycast(pos, Vector2.zero);
                 if (hit.collider.tag == "shooter")
                 {
-                    Debug.Log("llega");
                     OnMouseDrag();
                 }
-                
             }
         }
     }
@@ -68,11 +65,13 @@ public class cannonShooter : MonoBehaviour
         forceGenerated = transform.position - pivot.position;
         float forceMagnitud = -forceGenerated.magnitude * maxForce / springRate;
         rbShooter.transform.position = pivot.position;
+        Vector2 force = forceGenerated.normalized * forceMagnitud;
         if (forceGenerated.magnitude > thresholdDis && isDragging)
         {
             GameObject net = Instantiate(netPrefab, transform.position, Quaternion.identity);
             Rigidbody2D netRb = net.GetComponent<Rigidbody2D>();
-            netRb.AddForce(forceGenerated.normalized * forceMagnitud);
+            netRb.AddForce(force);
+            //creator.GenerateNet(force);
         }
         isDragging = false;
     }

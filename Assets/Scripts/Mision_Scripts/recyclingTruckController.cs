@@ -5,8 +5,6 @@ using UnityEngine;
 public class recyclingTruckController : MonoBehaviour
 {
     public recyclingTruck truck;
-    //public Transform wareHouseSender;
-    //public Transform wareHouse;
     public Vector3 loadPosition;
     private Rigidbody2D rb;     
 
