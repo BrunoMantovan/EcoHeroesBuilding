@@ -10,7 +10,7 @@ public class cannonShooterController : MonoBehaviour
     [SerializeField] private Transform pivot;
     [SerializeField] private GameObject netPrefab;
     [SerializeField] private Camera cameraShooter;
-    [SerializeField] private bool isDragging = false;
+    [SerializeField] private bool isDragging = true;
 
     public float springRate;
     public float maxForce;
@@ -27,7 +27,7 @@ public class cannonShooterController : MonoBehaviour
         rbShooter = GetComponent<Rigidbody2D>();
         rbShooter.bodyType = RigidbodyType2D.Static;
     }
-    private void FixedUpdate()
+    /*private void FixedUpdate()
     {
         if(Input.touchCount > 0 )
         {
@@ -46,10 +46,11 @@ public class cannonShooterController : MonoBehaviour
                 }
             }
         }
-    }
+    }*/
     private void OnMouseDrag()
     {
-        isDragging = true;
+        if (isDragging)
+            return;
         Vector3 pos = cameraShooter.ScreenToWorldPoint(Input.mousePosition);
         Vector3 shooterCharge = pos - pivot.position;
         shooterCharge.z = 0;
@@ -62,17 +63,19 @@ public class cannonShooterController : MonoBehaviour
 
     private void OnMouseUp()
     {
+        if (isDragging)
+            return;
+        isDragging = false;
         forceGenerated = transform.position - pivot.position;
         float forceMagnitud = -forceGenerated.magnitude * maxForce / springRate;
         rbShooter.transform.position = pivot.position;
         Vector2 force = forceGenerated.normalized * forceMagnitud;
-        if (forceGenerated.magnitude > thresholdDis && isDragging)
+        if (forceGenerated.magnitude > thresholdDis && !isDragging)
         {
             GameObject net = Instantiate(netPrefab, transform.position, Quaternion.identity);
             Rigidbody2D netRb = net.GetComponent<Rigidbody2D>();
             netRb.AddForce(force);
             //creator.GenerateNet(force);
         }
-        isDragging = false;
     }
 }

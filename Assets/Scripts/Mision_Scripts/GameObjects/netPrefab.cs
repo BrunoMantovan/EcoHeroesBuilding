@@ -14,7 +14,10 @@ public class netPrefab : MonoBehaviour
     public float netCloseSize;
     public Animator closeAnimation;
     public Sprite closeNetSprite;
+    public float timeShoot; 
     private bool canTrigger = true;
+    private float measurementTimeSpeed = 0.45f;
+    private float elapsedTime= 0;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +25,11 @@ public class netPrefab : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         rb.transform.localScale = new Vector3(netSize, netSize, 1f);
         recyclesCatch = new List<recycles>();
+        elapsedTime += Time.deltaTime;
+    }
+    private void Update()
+    {
+        if (!close) elapsedTime += Time.deltaTime;
     }
     private void OnMouseDown()
     {
@@ -36,22 +44,27 @@ public class netPrefab : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!close)
+        if (elapsedTime > measurementTimeSpeed)
         {
-            if (collision.gameObject.CompareTag("recycle"))
+
+            Debug.Log("+++++++"+measurementTimeSpeed);
+            if (!close)
             {
-                recyclesCatch.Add(collision.gameObject.GetComponent<recycles>());
-                collision.gameObject.transform.position = transform.position;
-                netWeight = netWeight + collision.gameObject.GetComponent<recycles>().weight;
-                Destroy(collision.gameObject, Time.deltaTime * 3f);
+                if (collision.gameObject.CompareTag("recycle"))
+                {
+                    recyclesCatch.Add(collision.gameObject.GetComponent<recycles>());
+                    collision.gameObject.transform.position = transform.position;
+                    netWeight = netWeight + collision.gameObject.GetComponent<recycles>().weight;
+                    Destroy(collision.gameObject, Time.deltaTime * 3f);
+                }
             }
-        }
-        else if (close)
-        {
-            if (collision.gameObject.CompareTag("nets"))
+            else if (close)
             {
-                collision.gameObject.GetComponent<netPrefab>().recyclesCatch = recyclesCatch;
-                Destroy(this.gameObject);
+                if (collision.gameObject.CompareTag("nets"))
+                {
+                    collision.gameObject.GetComponent<netPrefab>().recyclesCatch = recyclesCatch;
+                    Destroy(this.gameObject);
+                }
             }
         }
     }

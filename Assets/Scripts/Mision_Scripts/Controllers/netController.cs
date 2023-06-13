@@ -18,6 +18,8 @@ public class netController : MonoBehaviour
             closeNet();
         }
     }
+
+
     private void closeNet()
     {
 
