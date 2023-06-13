@@ -4,23 +4,23 @@ using UnityEngine;
 
 public class wareHouseCotroller : MonoBehaviour
 {
-    public List<recycles> savedRecycles;
+    public List<netPrefab> savedNetRecycles;
     Rigidbody2D rb;
     public float load;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        savedRecycles = new List<recycles>();
+        savedNetRecycles = new List<netPrefab>();
     }
-    public void SaveRecycle(recycles re)
+    public void SaveRecycle(netPrefab net)
     {
-        savedRecycles.Add(re);
+        savedNetRecycles.Add(net);
     }
     public float LoadCalculation()
     {
         load = 0;
-        foreach (recycles recycle in savedRecycles) load = load + recycle.weight;
+        foreach (netPrefab net in savedNetRecycles) load = load + net.netWeight;
         return load;
     }
 }

@@ -14,7 +14,8 @@ GameObject:
   - component: {fileID: 7645535764010508104}
   - component: {fileID: 6286481737904007147}
   - component: {fileID: 652172335}
-  m_Layer: 4
+  - component: {fileID: 2619619975036659556}
+  m_Layer: 0
   m_Name: plasticNet
   m_TagString: nets
   m_Icon: {fileID: 0}
@@ -121,15 +122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23cc3256af184f84baadb4e6f5689cab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  netCollider: {fileID: 0}
-  recyclesCatch: []
-  netSize: 0.15
-  netCloseSize: 0.12
-  water:
-    serializedVersion: 2
-    m_Bits: 16
-  closeAnimation: {fileID: 652172335}
-  closeNetSprite: {fileID: 21300000, guid: 2dd189af07bc78b468f6535683d6e797, type: 3}
+  net: {fileID: 2619619975036659556}
 --- !u!61 &6286481737904007147
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -140,7 +133,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.00000047683716, y: 0}
@@ -177,3 +170,22 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2619619975036659556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4358413609998753614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3884f5226ec3b9749a8f534cdfc99bc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  netWeight: 0
+  close: 0
+  recyclesCatch: []
+  netSize: 0.15
+  netCloseSize: 0.12
+  closeAnimation: {fileID: 652172335}
+  closeNetSprite: {fileID: 21300000, guid: 2dd189af07bc78b468f6535683d6e797, type: 3}
