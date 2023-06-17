@@ -5,5 +5,4 @@ using UnityEngine;
 public abstract class recycles : MonoBehaviour
 {
     public float weight;
-    
 }

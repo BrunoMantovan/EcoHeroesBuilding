@@ -12,10 +12,4 @@ public class recyclePlasticBottle : recycles
         this.rb = GetComponent<Rigidbody2D>();
         this.weight = 0.2f;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

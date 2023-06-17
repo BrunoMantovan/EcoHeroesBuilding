@@ -14,7 +14,7 @@ public class recyclingTruck : MonoBehaviour
     public float maxLoad = 2f;
 
     public float truckVelocity = 1f;
-    public float truckDescharge = 2f;
+    public float truckDescharge = 3f;
 
     public Image barCurrentLoad;
 

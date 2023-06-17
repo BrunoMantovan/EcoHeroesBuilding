@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class cannonPositionController : MonoBehaviour
 {
+    
     public Vector3 objetive;
     [SerializeField] private Camera cameraCannon;
-    // Update is called once per frame
     void Update()
     {
         rotateCamera();
@@ -18,4 +18,5 @@ public class cannonPositionController : MonoBehaviour
         float gradesAngle = (180 / Mathf.PI) * radiansAngle - 90;
         transform.rotation = Quaternion.Euler(0.35f, (0.6540875f/2), gradesAngle);
     }
+    
 }

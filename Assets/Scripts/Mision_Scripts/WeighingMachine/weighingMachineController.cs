@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
+using Unity.Mathematics;
 
 public class weighingMachineController : MonoBehaviour
 {
@@ -26,6 +27,9 @@ public class weighingMachineController : MonoBehaviour
         {
             Vector3 position = gridStart + new Vector3(currentColumn * cellSize, -currentRow * cellSize, 0f);
             list[i].transform.position = position;
+            Quaternion targetRotation = Quaternion.Euler(0f, 0f, 0f);
+            list[i].gameObject.GetComponent<Collider2D>().isTrigger = false;
+            list[i].transform.rotation = targetRotation;
             currentColumn++;
             if (currentColumn >= rowSize)
             {
