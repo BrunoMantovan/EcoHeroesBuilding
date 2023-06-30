@@ -14,7 +14,10 @@ GameObject:
   - component: {fileID: 7645535764010508104}
   - component: {fileID: 6286481737904007147}
   - component: {fileID: 652172335}
-  m_Layer: 4
+  - component: {fileID: 2619619975036659556}
+  - component: {fileID: -1863305238462944680}
+  - component: {fileID: 389970549070835003}
+  m_Layer: 0
   m_Name: plasticNet
   m_TagString: nets
   m_Icon: {fileID: 0}
@@ -87,7 +90,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!50 &4381167298058086521
 Rigidbody2D:
   serializedVersion: 4
@@ -105,6 +108,12 @@ Rigidbody2D:
   m_AngularDrag: 3
   m_GravityScale: 0
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -121,16 +130,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23cc3256af184f84baadb4e6f5689cab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  netCollider: {fileID: 0}
-  closeSpeed: -0.1
-  recyclesCatch: []
-  netSize: 0.15
-  netCloseSize: 0.12
-  water:
-    serializedVersion: 2
-    m_Bits: 16
+  net: {fileID: 2619619975036659556}
   closeAnimation: {fileID: 652172335}
-  closeNetSprite: {fileID: 21300000, guid: fc6d887f2c8e5b1418786728b5d78310, type: 3}
+  closeNetSprite: {fileID: 21300000, guid: 2dd189af07bc78b468f6535683d6e797, type: 3}
 --- !u!61 &6286481737904007147
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -141,7 +143,26 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.00000047683716, y: 0}
@@ -165,7 +186,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4358413609998753614}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: a845e58cc3832d54c9a696e89527de82, type: 2}
   m_CullingMode: 2
@@ -178,3 +199,53 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2619619975036659556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4358413609998753614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3884f5226ec3b9749a8f534cdfc99bc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  measurementTimeInAir: 0.35
+  catchRaduis: 0.8
+  netWeight: 0
+  close: 0
+  recyclesCatch: []
+--- !u!256 &-1863305238462944680
+FrictionJoint2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4358413609998753614}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_EnableCollision: 0
+  m_ConnectedRigidBody: {fileID: 0}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_BreakAction: 3
+  m_AutoConfigureConnectedAnchor: 1
+  m_Anchor: {x: 0, y: 0}
+  m_ConnectedAnchor: {x: -3.79, y: 1.93}
+  m_MaxForce: 15
+  m_MaxTorque: 1
+--- !u!114 &389970549070835003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4358413609998753614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53f9324ef65242a4eab16940f429557b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxSize: 0.3
+  growingRate: 1

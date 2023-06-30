@@ -1,5 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
+<<<<<<<< HEAD:Assets/Scripts/Mision_Scripts.meta
 guid: d88e059d204cfba4dbda3b0f6bf95e86
+========
+guid: f903bc33d547b2a43934fb85232dfa86
+>>>>>>>> MisionDev:Assets/Prefabs/Mision.meta
+=======
+guid: e13e5e0dea978b84ba3c0c58ebfe3661
+>>>>>>> MisionDev
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

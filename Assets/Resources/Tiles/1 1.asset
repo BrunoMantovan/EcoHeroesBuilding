@@ -12,7 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: 1 1
   m_EditorClassIdentifier: 
+<<<<<<<< HEAD:Assets/Resources/Tiles/1 1.asset
   m_Sprite: {fileID: 21300000, guid: da487ca46635e9f40896b8342f7deef0, type: 3}
+========
+  m_Sprite: {fileID: -1292772760, guid: d2d81f143a59fb3429ed3d8a57975008, type: 3}
+>>>>>>>> MisionDev:Assets/Sprites/Tileset/tileset_197.asset
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1

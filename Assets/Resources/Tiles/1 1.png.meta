@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Resources/Tiles/1 1.png.meta
 guid: da487ca46635e9f40896b8342f7deef0
+========
+guid: 2dd189af07bc78b468f6535683d6e797
+>>>>>>>> MisionDev:Assets/Sprites/Images/Bolsa V2.png.meta
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
